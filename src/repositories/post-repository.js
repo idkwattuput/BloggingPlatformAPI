@@ -19,7 +19,13 @@ async function savePost(data) {
 async function updatePost(id, data) {
   return await prisma.post.update({
     where: { id },
-    data,
+    data: {
+      title: data.title,
+      content: data.content,
+      category: data.category,
+      tags: data.tags,
+      updatedAt: new Date(),
+    },
   });
 }
 
